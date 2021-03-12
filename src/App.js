@@ -1,11 +1,15 @@
 // Styling
 import { GlobalStyle, ThemeButton } from "./styles";
 
+// Data
+import products from "./products";
+
 import Home from "./components/Home";
 // Components
 import ProductList from "./components/ProductList";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
+import ProductDetail from "./components/ProductDetail";
 
 const theme = {
   light: {
@@ -24,7 +28,11 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-
+  const [product, setProduct] = useState(products[null]);
+  const setView = () => {
+    if (product) return <ProductDetail product={product} />;
+    return <ProductList setProduct={setProduct} />;
+  };
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
 
@@ -35,7 +43,9 @@ function App() {
         {currentTheme === "light" ? "Dark" : "Light"} Mode
       </ThemeButton>
       <Home />
-      <ProductList />
+      <ProductList setProduct={setProduct} />
+      <ProductDetail product={product} />
+      {setView()}
     </ThemeProvider>
   );
 }
