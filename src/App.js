@@ -43,8 +43,6 @@ function App() {
         {currentTheme === "light" ? "Dark" : "Light"} Mode
       </ThemeButton>
       <Home />
-      <ProductList setProduct={setProduct} />
-      <ProductDetail product={product} />
       {setView()}
     </ThemeProvider>
   );

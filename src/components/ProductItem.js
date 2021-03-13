@@ -12,7 +12,7 @@ const ProductItem = (props) => {
         onClick={() => props.setProduct(product)}
       />
       <p>{product.name}</p>
-      <p className="product-price">{product.price} KD</p>
+      <p>{product.price} KD</p>
     </ProductWrapper>
   );
 };
