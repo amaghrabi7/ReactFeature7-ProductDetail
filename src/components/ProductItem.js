@@ -1,5 +1,8 @@
 // Styling
 import { ProductWrapper } from "../styles";
+import { DeleteButtonStyled } from "../styles";
+import deleteProduct from "../App";
+import DeleteButton from "./buttons/DeleteButton";
 
 const ProductItem = (props) => {
   const product = props.product;
@@ -12,7 +15,11 @@ const ProductItem = (props) => {
         onClick={() => props.setProduct(product)}
       />
       <p>{product.name}</p>
-      <p>{product.price} KD</p>
+      <p className="product-price">{product.price} KD</p>
+      <DeleteButton
+        productId={product.id}
+        deleteProduct={props.deleteProduct}
+      />
     </ProductWrapper>
   );
 };
